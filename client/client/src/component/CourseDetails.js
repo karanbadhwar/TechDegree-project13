@@ -49,14 +49,14 @@ export default function CourseDetails() {
 
   return (
     <>
-    {response ?
-      (<>
+    {response?  
+    <>
       <main>
         {currentCourse ? (
           <>
           <><div className="actions--bar">
       <div className="wrap">
-        {currentCourse.userId === authenticatedUser.id ? (
+      {authenticatedUser && currentCourse.userId === authenticatedUser.id ? (
           <>
             <Link className="button" to={`/courses/${id}/update`}>
               Update Course
@@ -120,9 +120,10 @@ export default function CourseDetails() {
           <h1>Loading..</h1>
         )}
       </main>
-      </>)
-      :
-        <Navigate to="/*" replace />}
       </>
+      :
+    <Navigate to="*" replace />}
+    </>
+   
   );
 }

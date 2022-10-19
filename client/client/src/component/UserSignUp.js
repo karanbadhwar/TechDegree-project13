@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import config from "../config";
 import axios from "axios";
 
 export default function UserSignUp() {
   const [errors, setErrors] = useState();
+  const navigate = useNavigate();
   let firstRef = useRef("");
   let lastRef = useRef("");
   let emailRef = useRef("");
@@ -35,6 +36,7 @@ export default function UserSignUp() {
       .post(url, {data})
       .then(() => {
         console.log("Created");
+        navigate('/signin')
     })
       .catch((err) => {
         console.log(err.request.response)

@@ -15,7 +15,8 @@ const Courses = () => {
       .get(Url)
       .then((data) => data.data.courses.forEach((el) => values.push(el)))
       .then(() => setDataFetched(values));
-  }, [dataFetched]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main>
