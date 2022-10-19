@@ -15,7 +15,7 @@ const Courses = () => {
       .get(Url)
       .then((data) => data.data.courses.forEach((el) => values.push(el)))
       .then(() => setDataFetched(values));
-  }, []);
+  }, [dataFetched]);
 
   return (
     <main>
