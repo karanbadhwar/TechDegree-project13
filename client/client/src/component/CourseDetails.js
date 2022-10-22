@@ -16,23 +16,31 @@ export default function CourseDetails() {
     async function fetchData() {
       return await axios
         .get(url)
-        .then((data) => data.data.course)
+        .then((data) => {
+          if(data){
+            return data.data.course
+          }
+        })
         .then((el) => {
           if(el){
             setCurrentCourse(el);
-          }else{
-            navigate('*', {replace: true})
           }
-          
         });
     }
 
     fetchData()
-      .catch((err) => console.log(err));
+    // .then(res => console.log(res.status))
+      .catch((err) =>{
+        if(err.response.status === 404){
+          return navigate('*', {replace:true})
+        } else{
+          return('/errors', {replace:true});
+        }
+      });
   }, []);
 
     /**
-     * deletemethod function, is to send a Delete fetch request to the Server.
+     * delete method function, is to send a Delete fetch request to the Server.
      * It is an async function and passes the options Object to the axios function 
      */
   const deleteMethod = async () => {

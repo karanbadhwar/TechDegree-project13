@@ -13,6 +13,7 @@ import '../src/styles/global.css';
 import {Route, Routes} from 'react-router-dom';
 import PrivateRoute from './component/PrivateRoute';
 import NotFound from './component/errors/NotFound';
+import Errors from './component/errors/Errors';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="courses/create" element={<PrivateRoute><CreateCourse /></PrivateRoute>} />
         <Route path="courses/:id" element={<CourseDetails />} />
         <Route path="courses/:id/update" element={<PrivateRoute><CourseUpdate /></PrivateRoute>} />
+        <Route path="/errors" element={<Errors />} />
         <Route path="*" element={<NotFound />}/>
       </Routes>
     </div>

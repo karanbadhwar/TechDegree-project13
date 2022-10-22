@@ -73,7 +73,7 @@ router.get(
     if (course) {
       res.status(200).json({ course });
     } else {
-      res.status(200).json({
+      res.status(404).json({
         message: "Invalid Entry, Data Not Found",
       });
     }
