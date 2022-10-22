@@ -23,6 +23,10 @@ export default function UserSignIn() {
     }
   };
 
+  const handleCancel = () =>{
+    navigate('/', {replace:true})
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!emailRef.current || !passRef.current){
@@ -32,7 +36,6 @@ export default function UserSignIn() {
       `${emailRef.current}:${passRef.current}`
     );
     const url = config.Url + "/users";
-    // console.log(actions)
     const options = {
       method: "GET",
       headers: {
@@ -40,11 +43,6 @@ export default function UserSignIn() {
         Authorization: `Basic ${encodedCredentials}`,
       },
     };
-    // const user = await actions
-    //   .signIn(url, options)
-    //   .then((user)=> {if(user === null){
-    //     console.log('null')
-    //   }})
     const response = await axios(url, options)
       .then((res) => res.data.users)
       .catch(err => setErrors(err.response.data.msg));
@@ -91,7 +89,7 @@ export default function UserSignIn() {
           <button className="button" type="submit">
             Sign In
           </button>
-          <button className="button button-secondary">Cancel</button>
+          <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
         </form>
         <p>
           Don't have a user account? Click here to{" "}
