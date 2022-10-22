@@ -26,6 +26,8 @@ export default function CreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = config.Url + "/courses";
+    // materialRef.current.replace('\n', '\n\n'); 
+
     const data = {
       title: titleRef.current,
       description: descRef.current,
@@ -45,7 +47,6 @@ export default function CreateCourse() {
     const response = await axios(url, options) 
       .then((res) => res)
       .catch((err) => {
-        console.log(err)
         setErrors(err.response.data.errors);
       });
 
