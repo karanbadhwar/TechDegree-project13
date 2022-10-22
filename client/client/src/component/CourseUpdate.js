@@ -29,6 +29,11 @@ export default function CourseUpdate() {
     course().catch((err) => console.log(err));
   }, []);
 
+    /**
+     * handleChange function, is called on every onChange event on the Input or Textareas.
+     * It changes the values for ref's created for the respective values
+     * @param {*} e - event
+     */
   const handleChange = (e) => {
     if (e.target.id === "courseTitle") {
       titleRef.current = e.target.value;
@@ -40,6 +45,12 @@ export default function CourseUpdate() {
       materialsRef.current = e.target.value;
     }
   };
+
+  /**
+   * handleSubmit function, this function is passed on the <Form> to answer the Submit event.
+   * handleSubmit, makes an update fetch request to the Server and passes Data Object to the Fetch request
+   * @param {*} e - Event
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {

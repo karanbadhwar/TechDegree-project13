@@ -31,6 +31,10 @@ export default function CourseDetails() {
       .catch((err) => console.log(err));
   }, []);
 
+    /**
+     * deletemethod function, is to send a Delete fetch request to the Server.
+     * It is an async function and passes the options Object to the axios function 
+     */
   const deleteMethod = async () => {
     const options = {
       method: "DELETE",

@@ -12,6 +12,12 @@ export default function CreateCourse() {
   const materialRef = useRef("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
+
+  /**
+   * handleChange is a function, which is called on every onChange event triggered.
+   * This function looks after the Four fields Input/Textarea and triggered on every change and updates the respective ref's. 
+   * @param {*} e - Event
+   */
   const handleChange = (e) => {
     if (e.target.id === "courseTitle") {
       titleRef.current = e.target.value;
@@ -23,10 +29,16 @@ export default function CreateCourse() {
       materialRef.current = e.target.value;
     }
   };
+
+  /**
+   * handleSubmit function, makes a POST request via Axios to the Server.
+   * It is an async function, passes the Data object to the axios with detailed credentials about the new Course with Authorization
+   * @param {*} e - Event
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = config.Url + "/courses";
-    // materialRef.current.replace('\n', '\n\n'); 
+    // materialRef.current.replace('\n', '\n\n');
 
     const data = {
       title: titleRef.current,
@@ -44,25 +56,27 @@ export default function CreateCourse() {
       },
       data,
     };
-    const response = await axios(url, options) 
+    const response = await axios(url, options)
       .then((res) => res)
       .catch((err) => {
         setErrors(err.response.data.errors);
       });
 
-    if(response){
-      navigate('/');
+    if (response) {
+      navigate("/");
     }
   };
   return (
     <main>
-      <div className="wrap" >
+      <div className="wrap">
         <h2>Create Course</h2>
         {errors.length > 0 && (
           <div className="validation--errors">
             <h3>Validation Errors</h3>
             <ul>
-                {errors.map((err,index) => <li key={index}>{err}</li>)}
+              {errors.map((err, index) => (
+                <li key={index}>{err}</li>
+              ))}
             </ul>
           </div>
         )}
