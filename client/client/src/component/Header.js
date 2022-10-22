@@ -14,7 +14,7 @@ export default function Header() {
         <>
             <nav>
                 <span>Welcome, {authenticatedUser.firstName} </span>
-                <Link className='signout' to="/signin" onClick={()=> actions.signOut()}>Sign Out</Link> 
+                <Link className='signout' to="/signOut" onClick={()=> actions.signOut()}>Sign Out</Link> 
             </nav>
         </>
         :

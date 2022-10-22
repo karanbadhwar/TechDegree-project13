@@ -4,6 +4,7 @@ import Courses from './component/Courses';
 import CourseDetails from './component/CourseDetails';
 import UserSignIn from './component/UserSignIn';
 import UserSignUp from './component/UserSignUp';
+import UserSignOut from './component/UserSignOut';
 import CreateCourse from './component/CreateCourse';
 import CourseUpdate from './component/CourseUpdate';
 import Header from './component/Header';
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/" element={<Courses />} />
         <Route path="signin" element={<UserSignIn />} />
         <Route path="signup" element={<UserSignUp />} />
+        <Route path="/signOut" element={<UserSignOut />} />
         <Route path="courses/create" element={<PrivateRoute><CreateCourse /></PrivateRoute>} />
         <Route path="courses/:id" element={<CourseDetails />} />
         <Route path="courses/:id/update" element={<PrivateRoute><CourseUpdate /></PrivateRoute>} />
