@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useRef, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Context } from "./Context";
 import config from "../config";
 
 export default function UserSignIn() {
   const [errors, setErrors] = useState("");
+  const location = useLocation();
   const { actions } = useContext(Context);
   const navigate = useNavigate();
   let emailRef = useRef("");
@@ -50,7 +51,11 @@ export default function UserSignIn() {
     if(response){
       response.Authorization = encodedCredentials;
       actions.signIn(response);
-      navigate('/');
+      if(location.state){
+        navigate(location.state.from)
+      }else{
+        navigate('/');
+      }
 
     }
   };

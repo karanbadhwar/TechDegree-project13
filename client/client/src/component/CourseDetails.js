@@ -29,7 +29,6 @@ export default function CourseDetails() {
     }
 
     fetchData()
-    // .then(res => console.log(res.status))
       .catch((err) =>{
         if(err.response.status === 404){
           return navigate('*', {replace:true})
