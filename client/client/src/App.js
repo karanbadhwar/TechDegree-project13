@@ -14,6 +14,7 @@ import {Route, Routes} from 'react-router-dom';
 import PrivateRoute from './component/PrivateRoute';
 import NotFound from './component/errors/NotFound';
 import Errors from './component/errors/Errors';
+import Forbidden from './component/Forbidden';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="courses/:id" element={<CourseDetails />} />
         <Route path="courses/:id/update" element={<PrivateRoute><CourseUpdate /></PrivateRoute>} />
         <Route path="/errors" element={<Errors />} />
+        <Route path="/forbidden" element={<Forbidden />} />
         <Route path="*" element={<NotFound />}/>
       </Routes>
     </div>

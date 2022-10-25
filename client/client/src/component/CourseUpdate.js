@@ -147,7 +147,7 @@ export default function CourseUpdate() {
             </form>
           </div>
       </main>
-      : <Navigate to={`/courses/${id}`} replace/>}</>
+      : <Navigate to={`/forbidden`} replace/>}</>
     :
       <h1>Loading...</h1>
     }

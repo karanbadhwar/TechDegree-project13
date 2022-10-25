@@ -31,6 +31,12 @@ export default function CreateCourse() {
   };
 
   /**
+   * function handleCancel- It cancels out the form Request and redirects the user to the Home Page
+   */
+  const handleCancel = () =>{
+    navigate('/', {replace:true})
+  }
+  /**
    * handleSubmit function, makes a POST request via Axios to the Server.
    * It is an async function, passes the Data object to the axios with detailed credentials about the new Course with Authorization
    * @param {*} e - Event
@@ -124,7 +130,7 @@ export default function CreateCourse() {
           <button className="button" type="submit">
             Create Course
           </button>
-          <button className="button button-secondary">Cancel</button>
+          <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
         </form>
       </div>
     </main>

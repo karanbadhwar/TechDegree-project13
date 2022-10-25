@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState, useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Context } from "./Context";
 import config from "../config";
 
@@ -98,7 +98,7 @@ export default function UserSignIn() {
         </form>
         <p>
           Don't have a user account? Click here to{" "}
-          <a href="sign-up.html">sign up</a>!
+          <Link to="/signup">sign up</Link>!
         </p>
       </div>
     </main>

@@ -11,6 +11,10 @@ export default function UserSignUp() {
   let emailRef = useRef("");
   let passRef = useRef("");
 
+    /**
+     * function handleChange, it updates the respective Ref's which we will use in the handleSubmit Function.
+     * @param {*} e Event
+     */
   const handleChange = (e) => {
     if (e.target.id === "firstName") {
       firstRef.current = e.target.value;
@@ -23,6 +27,16 @@ export default function UserSignUp() {
     }
   };
 
+  /**
+   * Function handleCancel, It cancels out the rquest to submit the New User Form and redirects the User
+   */
+  const handleCancel = () =>{
+    navigate('/', {replace:true})
+  }
+  /**
+   * Function handleSubmit, it creates a POSr User Request via Axios 
+   * @param {*} e - Event
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = config.Url + "/users";
@@ -93,7 +107,7 @@ export default function UserSignUp() {
           <button className="button" type="submit">
             Sign Up
           </button>
-          <button className="button button-secondary">
+          <button className="button button-secondary" onClick={handleCancel}>
             <Link to="/">Cancel</Link>
           </button>
         </form>
